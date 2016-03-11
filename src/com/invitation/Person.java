@@ -1,10 +1,10 @@
 package com.invitation;
 
-
-
 public class Person {
     private final Name name;
     private final Gender gender;
+
+
     private final int age;
     private final Address address;
 
@@ -19,4 +19,17 @@ public class Person {
     public String getName(String option) {
         return gender.getPrefix()+" "+name.getFormattedName(option);
     }
+
+    public boolean isNationality(String country) {
+        return address.isCountry(country);
+    }
+
+    public boolean isAbove(int age) {
+        return this.age >= age;
+    }
+
+    public String getPersonAge() {
+        return ""+age;
+    }
+
 }

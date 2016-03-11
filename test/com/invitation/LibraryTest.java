@@ -13,7 +13,7 @@ public class LibraryTest {
                               "Melody,Dooley,Female,31,West Shanna,Vermont,Bangladesh",
                               "Carlos,Johns,Male,35,West Shanna,South Carolina,Bangladesh"};
         Library lib = new Library(gustList);
-        ArrayList<String> labels = lib.getLabels("-f");
+        ArrayList<String> labels = lib.getLabels("firstNameFirst");
         ArrayList<String> expected = new ArrayList<>(4);
         expected.add("Ms. Julius Barrows");
         expected.add("Ms. Melody Dooley");
@@ -27,12 +27,13 @@ public class LibraryTest {
                 "Melody,Dooley,Female,31,West Shanna,Vermont,Bangladesh",
                 "Carlos,Johns,Male,35,West Shanna,South Carolina,Bangladesh"};
         Library lib = new Library(gustList);
-        ArrayList<String> labels = lib.getLabels("-l");
+        ArrayList<String> labels = lib.getLabels("lastNameFirst");
         ArrayList<String> expected = new ArrayList<>(4);
-        expected.add("Ms. Barrows,Julius");
-        expected.add("Ms. Dooley,Melody");
-        expected.add("Mr. Johns,Carlos");
+        expected.add("Ms. Barrows, Julius");
+        expected.add("Ms. Dooley, Melody");
+        expected.add("Mr. Johns, Carlos");
         
         assertTrue(expected.equals(labels));
     }
+
 }
