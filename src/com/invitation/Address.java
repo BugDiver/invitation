@@ -1,5 +1,7 @@
 package com.invitation;
 
+import java.util.Objects;
+
 public class Address {
     private String city;
     private String state;
@@ -9,5 +11,9 @@ public class Address {
         this.city = city;
         this.state = state;
         this.country = country;
+    }
+
+    public boolean isCountry(String nation) {
+        return Objects.equals(this.country, nation);
     }
 }
