@@ -3,16 +3,16 @@ package com.helper;
 import com.invitation.Person;
 
 public class AgeFilter implements Filter {
-    private int age;
+    private String age;
 
     @Override
     public boolean check(Person person) {
-        return person.isAbove(age);
+        return person.isAgeOf(Integer.parseInt(age));
     }
 
     @Override
     public void addConstraint(String age) {
-        this.age = Integer.parseInt(age);
+        this.age = age;
     }
 
     @Override
@@ -27,12 +27,12 @@ public class AgeFilter implements Filter {
 
         AgeFilter ageFilter = (AgeFilter) o;
 
-        return age == ageFilter.age;
+        return age != null ? age.equals(ageFilter.age) : ageFilter.age == null;
 
     }
 
     @Override
     public int hashCode() {
-        return age;
+        return age != null ? age.hashCode() : 0;
     }
 }

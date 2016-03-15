@@ -3,6 +3,7 @@ package com.invitation;
 import com.helper.ArgsReader;
 import com.helper.Filter;
 import com.helper.ReadGuestList;
+
 import java.util.ArrayList;
 
 public class LabelPrinter {
@@ -13,8 +14,8 @@ public class LabelPrinter {
         String fileName = argsReader.getFileName();
         ArrayList<Filter> filters = argsReader.getFilters();
 
-        ReadGuestList rgl = new ReadGuestList(fileName);
-        Library lib = new Library(rgl.read());
+        ReadGuestList reader = new ReadGuestList(fileName);
+        Library lib = new Library(reader.read());
 
         ArrayList<String> labelList = lib.getLabels(namingStyle ,filters);
         printLabels(labelList);

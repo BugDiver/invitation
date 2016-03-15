@@ -11,21 +11,31 @@ public class Library {
         this.list = list;
     }
 
-    public ArrayList<String> getLabels(String option) {
+    private Person createPerson(String detail) {
+            String[] personDetail = detail.split(",");
+            Name name = new Name(personDetail[0] ,personDetail[1]);
+            Gender gender = new Gender(personDetail[2]);
+            Age age = new Age(Integer.parseInt(personDetail[3]));
+            Address address = new Address(personDetail[4],personDetail[5],personDetail[6]);
+            return new Person(name ,gender ,age ,address);
+    }
+
+    private ArrayList<String> getLabels(String option) {
         ArrayList<String> labels = new ArrayList<>(list.length);
         for (String detail : list) {
-            Person p = new Person(detail.split(","));
+            Person p = createPerson(detail);
             labels.add(p.getName(option));
         }
         return labels;
     }
 
+
     public ArrayList<String> getLabels(String namingStyle, ArrayList<Filter> filters) {
         ArrayList<String> labels = new ArrayList<>(list.length);
-        if (filters.isEmpty()) return getLabels(namingStyle);
+        if (filters == null || filters.isEmpty()) return getLabels(namingStyle);
         for (String detail : list) {
             String label = "";
-            Person p = new Person(detail.split(","));
+            Person p = createPerson(detail);
             boolean flag = true;
             for (Filter filter : filters) {
                 if (filter.check(p) && flag) {

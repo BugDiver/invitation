@@ -1,6 +1,6 @@
 package com.helper;
 
-import com.invitation.Person;
+import com.invitation.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,8 +10,13 @@ public class CountryFilterTest {
     public void testCountryFilterShouldCheckIfTheGivenPersonBelongFromConstraintCountry() {
         CountryFilter countryFilter = new CountryFilter();
         countryFilter.addConstraint("Macedonia");
-        String details = "Julius,Barrows,Female,28,Veda haven,Vermont,Macedonia";
-        Person person = new Person(details.split(","));
+
+        Name name = new Name("Julius" ,"Barrows"){};
+        Gender gender = new Gender("Female"){};
+        Age age = new Age(28){};
+        Address address = new Address("Veda haven" ,"Vermont" ,"Macedonia");
+        Person person = new Person(name ,gender ,age ,address);
+
         assertTrue(countryFilter.check(person));
         assertEquals(countryFilter.getConstraint(person) ,"Macedonia");
     }

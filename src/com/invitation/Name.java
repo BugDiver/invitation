@@ -13,4 +13,5 @@ public class Name {
     public String getFormattedName(String option) {
         return formattedNames.get(option);
     }
+
 }

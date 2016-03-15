@@ -3,33 +3,32 @@ package com.invitation;
 public class Person {
     private final Name name;
     private final Gender gender;
-
-
-    private final int age;
     private final Address address;
+    private final Age age;
 
-    public Person(String[] detail) {
-        this.name = new Name(detail[0] ,detail[1]);
-        this.gender = new Gender(detail[2]);
-        this.age = Integer.parseInt(detail[3]);
-        this.address = new Address(detail[4],detail[5],detail[6]);
+    public Person(Name name, Gender gender, Age age, Address address) {
+
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.address = address;
     }
 
 
     public String getName(String option) {
-        return gender.getPrefix()+" "+name.getFormattedName(option);
+        return gender.getPrefix() +" "+ name.getFormattedName(option);
     }
 
     public boolean isNationality(String country) {
         return address.isCountry(country);
     }
 
-    public boolean isAbove(int age) {
-        return this.age >= age;
+    public boolean isAgeOf(int age) {
+        return this.age.isOlderThan(age);
     }
 
     public String getPersonAge() {
-        return ""+age;
+        return age.toString();
     }
 
 }
